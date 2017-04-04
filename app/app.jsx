@@ -12,10 +12,6 @@ store.subscribe(() => {
   console.log('New state', store.getState());
 });
 
-store.dispatch(actions.addTodo('Do something rad'));
-store.dispatch(actions.setSearchText('rad'));
-store.dispatch(actions.toggleShowCompleted());
-
 // Load Foundation
 $(document).foundation();
 
