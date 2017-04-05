@@ -5,7 +5,7 @@ var reducers = require('reducers');
 
 describe('Reducers', () => {
   describe('searchTextReducer', () => {
-    it ('should set search text', () => {
+    it('should set search text', () => {
       var action = {
         type: 'SET_SEARCH_TEXT',
         searchText: 'Some search string'
@@ -17,7 +17,7 @@ describe('Reducers', () => {
   });
 
   describe('showCompletedReducer', () => {
-    it ('should flip showCompleted status', () => {
+    it('should flip showCompleted status', () => {
       var action = {
         type: 'TOGGLE_SHOW_COMPLETED'
       };
@@ -28,7 +28,7 @@ describe('Reducers', () => {
   });
 
   describe('todosReducer', () => {
-    it ('should add new todo', () => {
+    it('should add new todo', () => {
       var action = {
         type: 'ADD_TODO',
         todo: {
@@ -44,7 +44,7 @@ describe('Reducers', () => {
       expect(res[0]).toEqual(action.todo);
     });
 
-    it ('should update todo', () => {
+    it('should update todo', () => {
       var todos = [{
         id: '123',
         text: 'Something',
@@ -69,7 +69,7 @@ describe('Reducers', () => {
       expect(res[0].text).toEqual(todos[0].text);
     });
 
-    it ('should add existing todos', () => {
+    it('should add existing todos', () => {
       var todos = [{
         id: 111,
         text: 'Anything',
@@ -85,6 +85,30 @@ describe('Reducers', () => {
 
       expect(res.length).toEqual(1);
       expect(res[0]).toEqual(todos[0]);
+    });
+  });
+
+  describe('authReducer', () => {
+    it('should set uid on login', () => {
+      var action = {
+        type: 'LOGIN',
+        uid: 'abc123'
+      };
+      var res = reducers.authReducer(undefined, df(action));
+
+      expect(res).toEqual({uid: action.uid});
+    });
+
+    it('should remove uid on logout', () => {
+      var authData = {
+        uid: 'abc123'
+      };
+      var action = {
+        type: 'LOGOUT'
+      };
+      var res = reducers.authReducer(df(authData), df(action));
+
+      expect(res).toEqual({});
     });
   });
 });
