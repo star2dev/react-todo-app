@@ -1,0 +1,14 @@
+.callout-auth {
+  text-align: center;
+  background-color: $light-grey;
+  border: 1px solid $light-grey-border;
+  padding: 2rem;
+
+  h3, p {
+    margin-bottom: 2rem;
+  }
+
+  .button-github {
+    background-color: #4078c0;
+  }
+}
