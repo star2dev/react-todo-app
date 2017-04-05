@@ -17,7 +17,7 @@ export var TodoApp = React.createClass({
     return (
       <div>
         <div className="page-actions">
-          <a href="" className="hollow button alert" onClick={this.onLogout}>
+          <a href="" className="button alert" onClick={this.onLogout}>
             <em className="fa fa-sign-out"></em> Logout
           </a>
         </div>
