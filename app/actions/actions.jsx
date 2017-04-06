@@ -1,4 +1,4 @@
-import firebase, {firebaseRef, githubProvider} from 'app/firebase/';
+import firebase, {firebaseRef, githubProvider, facebookProvider} from 'app/firebase/';
 import moment from 'moment';
 
 export var setSearchText = (searchText) => {
@@ -99,9 +99,14 @@ export var login = (uid) => {
   };
 };
 
-export var startLogin = () => {
+export var startLogin = (authProvider) => {
   return (dispatch, getState) => {
-    return firebase.auth().signInWithPopup(githubProvider).then((result) => {
+    var authProviderRef = {};
+
+    if (authProvider === 'GitHub') authProviderRef = firebase.auth().signInWithPopup(githubProvider);
+    else if (authProvider === 'Facebook') authProviderRef = firebase.auth().signInWithPopup(facebookProvider);
+
+    return authProviderRef.then((result) => {
       console.log('Auth worked!', result);
     }, (error) => {
       console.log('Auth failed!', error);
