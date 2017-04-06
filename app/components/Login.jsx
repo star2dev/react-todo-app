@@ -4,7 +4,7 @@ import * as Redux from 'react-redux';
 import * as actions from 'actions';
 import LoginButton from 'LoginButton';
 
-export var Login = React.createClass({
+export class Login extends React.Component {
   render() {
     return (
       <div>
@@ -28,6 +28,6 @@ export var Login = React.createClass({
       </div>
     );
   }
-});
+};
 
 export default Redux.connect()(Login);

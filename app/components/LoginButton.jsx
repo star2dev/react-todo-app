@@ -3,17 +3,16 @@ import * as Redux from 'react-redux';
 
 import * as actions from 'actions';
 
-export var LoginButton = React.createClass({
-  propTypes: {
-    btnClass: React.PropTypes.string.isRequired,
-    faIcon: React.PropTypes.string.isRequired,
-    authProvider: React.PropTypes.string.isRequired
-  },
+export class LoginButton extends React.Component {
+  constructor (props) {
+    super(props);
+    this.onLogin = this.onLogin.bind(this);
+  }
   onLogin() {
     var {dispatch, authProvider} = this.props;
 
     dispatch(actions.startLogin(authProvider));
-  },
+  }
   render() {
     var {btnClass, faIcon, authProvider} = this.props;
 
@@ -25,6 +24,12 @@ export var LoginButton = React.createClass({
       </div>
     );
   }
-});
+};
+
+LoginButton.propTypes = {
+  btnClass: React.PropTypes.string.isRequired,
+  faIcon: React.PropTypes.string.isRequired,
+  authProvider: React.PropTypes.string.isRequired
+};
 
 export default Redux.connect()(LoginButton);
