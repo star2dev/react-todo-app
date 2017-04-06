@@ -18,6 +18,9 @@ export var Login = React.createClass({
                 Login with an account below.
               </p>
               <LoginButton authProvider={'GitHub'} btnClass={'button-github'} faIcon={'fa-github'}/>
+              <div className="callout-auth__or">
+                <span>Or</span>
+              </div>
               <LoginButton authProvider={'Facebook'} btnClass={'button-facebook'} faIcon={'fa-facebook-official'}/>
             </div>
           </div>
